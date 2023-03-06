@@ -1,8 +1,9 @@
 function [wo, wc, b0] = DesignLADRC1(P, wf, PM)
 % Design the first order LADRC controller
-% P = tf(16.454, conv([1, 0], conv([0.709, 1], [0.01, 1] )));
+% P = tf(1,[10,-1]);
 % wf = 30;
-% PM = 45;
+% PM = 60;
+% [wo, wc, b0] = DesignLADRC1(P, wf, PM);
 
 
 load('gamma_map.mat');

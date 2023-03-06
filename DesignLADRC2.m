@@ -3,6 +3,7 @@ function [wo, wc, b0] = DesignLADRC2(P, wf, PM)
 % P = tf(16.454, conv([1, 0], conv([0.709, 1], [0.01, 1] )));
 % wf = 30;
 % PM = 45;
+% [wo, wc, b0] = DesignLADRC2(P, wf, PM);
 
 
 load('gamma_map.mat');
