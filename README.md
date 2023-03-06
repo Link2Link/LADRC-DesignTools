@@ -3,13 +3,14 @@ Matlab script for LADRC controller design.
  
 ## Getting Started
 
-with given Plant (dynamic system), required crossover frequency wf and phase margin PM, the function give back the parameter for the second order LADRC controller. 
+with given Plant (dynamic system), required crossover frequency wf and phase margin PM, the function give back the parameter for the first/second order LADRC controller. 
 
 ```
+[wo, wc, b0] = DesignLADRC1(P, wf, PM)
 [wo, wc, b0] = DesignLADRC2(P, wf, PM)
 ```
 
-please check the demo.mlx for more details.
+please check the "demo_1st_LADRC.mlx" and "demo_2ed_LADRC.mlx" for more details.
 
 ## Reference
 
