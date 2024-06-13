@@ -43,46 +43,14 @@ wo = wf * gamma;
 wc = wf / gamma;
 [C, C1] = LADRC2(wo, wc, 1);
 b0 = norm(freqresp(P*C, wf));
-[C, C1] = LADRC2(wo, wc, b0);
 
 disp('wo : '+ string(wo))
 disp('wc : '+ string(wc))
 disp('b0 : '+ string(b0))
 
-[Gm,Pm,Wcg,Wcp] = margin(P*C);
 disp('Design result: ')
-disp('PM = '+ string(Pm) + '°')
-disp('wf = ' + string(Wcp)' + ' rad/s')
+EvalLADRC2(P, wo, wc, b0);
 
-
-FeedbackLoop = feedback(P*C,1);
-[mag,phase,wout] = bode(FeedbackLoop);
-mag = mag(:);
-wout = wout(:);
-[~, k] = min(abs(mag - sqrt(2)/2));
-BW = wout(k) / 2 / pi;
-disp('Feedback loop BW = '+ string(BW) + ' Hz')
-
-SystemLoop = feedback(P*C,1)*C1;
-[mag, phase, wout] = bode(SystemLoop);
-mag = mag(:);
-wout = wout(:);
-[~, k] = min(abs(mag - sqrt(2)/2));
-BW = wout(k) / 2 / pi;
-disp('System BW = '+ string(BW) + ' Hz')
-
-
-%% plot the result 
-
-figure
-subplot(1,2,1)
-bode(SystemLoop)
-title('Full system bode')
-grid
-subplot(1,2,2)
-step(SystemLoop)
-grid
-title('Full system step response')
 
 
 end
