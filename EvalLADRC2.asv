@@ -12,10 +12,6 @@ L = P*C;   % openloop transfer function
 Sensitivity = 1/(1+L);
 Comp_Sensitivity = L/(1+L);
 
-[mag,phase,wout] = bode(Comp_Sensitivity);
-mag = mag(:);
-Ms = max(mag);
-disp('Ms = '+ string(Ms))
 [Gm,Pm,Wcg,Wcp] = margin(L);
 disp('PM = '+ string(Pm) + '°')
 disp('wf = ' + string(Wcp)' + ' rad/s')
@@ -35,13 +31,15 @@ BW = wout(k) / 2 / pi;
 disp('System BW = '+ string(BW) + ' Hz')
 %% plot the result 
 
-figure("Position", [680 458 800 420]);
+figure("Position", [680 458 1120 420]);
+subplot(1,2,1)
 bode(Sensitivity)
 grid
-hold 
-bode(Comp_Sensitivity)
 title('Sensitivity Tranfer Fcuntion')
-legend('Sensitivity', 'Compensate')
+subplot(1,2,2)
+bode(Comp_Sensitivity)
+grid
+title('Compensate  Sensitivity Tranfer Fcuntion')
 
 figure("Position", [680 458 1120 420]);
 subplot(1,2,1)
