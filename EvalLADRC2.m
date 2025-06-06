@@ -33,6 +33,12 @@ wout = wout(:);
 [~, k] = min(abs(mag - sqrt(2)/2));
 BW = wout(k) / 2 / pi;
 disp('System BW = '+ string(BW) + ' Hz')
+
+info = stepinfo(SystemLoop, 'SettlingTimeThreshold', 0.02);
+disp('SettlingTime Time = '+ string(info.SettlingTime) + ' sec');
+disp('Overshoot = '+ string(info.Overshoot));
+
+
 %% plot the result 
 
 figure("Position", [680 458 800 420]);
